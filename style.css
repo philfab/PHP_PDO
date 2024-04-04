@@ -1,0 +1,19 @@
+td {
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid;
+  }
+
+  tr{
+    cursor: pointer;
+  }
+
+  tr:hover{
+    background-color: lightblue;
+  }
+
+  th{
+    font-size: larger;
+  }

@@ -1,5 +1,7 @@
 <?php
 
+phpinfo();
+
 /*
 Le premier paramètre (qui commence par mysql  ) s'appelle le DSN : Data Source Name. C'est généralement le seul qui change en fonction du type de base de données auquel on se connecte.
 
