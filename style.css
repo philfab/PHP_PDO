@@ -1,8 +1,14 @@
+*{
+  box-sizing: border-box;
+  margin: 10px;
+ 
+}
+
 td {
     text-align: center;
 }
 
-table, th, td {
+th, td {
     border: 1px solid;
   }
 
@@ -17,3 +23,18 @@ table, th, td {
   th{
     font-size: larger;
   }
+
+  .td-form {
+    display: none;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.container-bataille{
+  display: flex;
+  flex-direction: column;
+}
