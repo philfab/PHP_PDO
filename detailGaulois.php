@@ -9,7 +9,7 @@ if (isset($_POST['id_personnage'])) {
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ]);
 
-        $req = $pdo->prepare("SELECT personnage.nom_personnage, lieu.nom_lieu, specialite.nom_specialite 
+        $req = $pdo->prepare("SELECT personnage.nom_personnage,personnage.adresse_personnage, lieu.nom_lieu, specialite.nom_specialite 
                                FROM personnage
                                JOIN lieu ON personnage.id_lieu = lieu.id_lieu
                                JOIN specialite ON personnage.id_specialite = specialite.id_specialite
@@ -23,6 +23,7 @@ if (isset($_POST['id_personnage'])) {
                               FROM bataille
                               JOIN prendre_casque ON bataille.id_bataille = prendre_casque.id_bataille
                               WHERE prendre_casque.id_personnage = ?
+                              GROUP BY bataille.id_bataille
                               ORDER BY bataille.date_bataille DESC");
 
         $req->execute([$idPersonnage]);

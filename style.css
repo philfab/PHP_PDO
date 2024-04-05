@@ -6,25 +6,27 @@
 
 td {
     text-align: center;
+    padding: 5px 10px;
 }
 
 th, td {
     border: 1px solid;
   }
 
-  tr{
+tbody tr{
     cursor: pointer;
   }
 
-  tr:hover{
+tbody > tr:hover{
     background-color: lightblue;
   }
 
-  th{
+th{
     font-size: larger;
+    padding : 0 10px;
   }
 
-  .td-form {
+.td-form {
     display: none;
 }
 
@@ -34,7 +36,18 @@ th, td {
   align-items: flex-start;
 }
 
-.container-bataille{
+.container-details{
   display: flex;
   flex-direction: column;
+  padding : 0;
+  margin-top: 0;
+}
+
+ul {
+  padding: 0;
+  margin-top: 0;
+}
+
+h3 {
+ margin :0;
 }
