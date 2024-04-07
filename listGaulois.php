@@ -2,27 +2,33 @@
 session_start();
 //---------------------------------------------------------------------------------------
 
-try {
-    $pdo = new PDO(
-        'mysql:host=localhost;dbname=gaulois;charset=utf8',
-        'root',
-        '',
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION],
-    );
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
+if (!isset($_SESSION['persos'])) {
+    try {
+        $pdo = new PDO(
+            'mysql:host=localhost;dbname=gaulois;charset=utf8',
+            'root',
+            '',
+            [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION],
+        );
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    $sql =
+        "SELECT id_personnage, nom_personnage, specialite.nom_specialite, lieu.nom_lieu 
+         FROM personnage
+         INNER JOIN lieu ON personnage.id_lieu = lieu.id_lieu
+         INNER JOIN specialite ON personnage.id_specialite = specialite.id_specialite
+        ";
+
+    $perso = $pdo->prepare($sql);
+    $perso->execute();
+    $persos = $perso->fetchAll();
+
+    $_SESSION['persos'] = $persos;
+} else {
+    $persos = $_SESSION['persos'];
 }
-
-//---------------------------------------------------------------------------------------
-
-$sql =
-    "SELECT id_personnage, nom_personnage, specialite.nom_specialite, lieu.nom_lieu FROM personnage
-    INNER JOIN lieu ON personnage.id_lieu = lieu.id_lieu
-    INNER JOIN specialite ON personnage.id_specialite = specialite.id_specialite";
-
-$perso = $pdo->prepare($sql);
-$perso->execute();
-$persos = $perso->fetchAll();
 ?>
 
 <!-------------------------------------------------------------------------------------->
